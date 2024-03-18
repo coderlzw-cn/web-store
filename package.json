@@ -37,6 +37,7 @@
     "ts-jest": "^29.1.2",
     "typescript": "5.3.3"
   },
+  "files": ["dist"],
   "dependencies": {
     "crypto-js": "^4.2.0"
   }
