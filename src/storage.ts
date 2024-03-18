@@ -23,7 +23,7 @@ interface UnencryptedStorageData<K, V> {
 type StorageData<K, V> = EncryptedStorageData<K, V> | UnencryptedStorageData<K, V>
 
 interface StorageDataWithTime {
-  value: any
+  value: unknown
   expire?: number
   time?: number
 }
@@ -32,11 +32,24 @@ interface StorageDataWithTime {
  * 存储值到本地
  * @param data
  */
-export const setStorage = <K extends string, V = any>(data: StorageData<K, V>): void => {
-  const { key, value, type, expire, encrypt = false, secretKey } = data
+export const setStorage = <V = unknown, K extends string = never>(data: StorageData<K, V>): void => {
+  const {
+    key,
+    value,
+    type,
+    expire,
+    encrypt = false,
+    secretKey
+  } = data
   if (expire != null && isNaN(expire)) throw new Error('expire must be a number')
   if (expire != null && expire <= 0) throw new Error('expire must be greater than 0')
-  const storageData = (expire != null) ? { value, time: Date.now(), expire } : { value }
+  const storageData = (expire != null)
+    ? {
+        value,
+        time: Date.now(),
+        expire
+      }
+    : { value }
 
   let stringValue: string
   if (encrypt) {
@@ -58,7 +71,11 @@ export const setStorage = <K extends string, V = any>(data: StorageData<K, V>): 
  * @param type
  * @param secretKey
  */
-export const getStorage = <V = unknown, K extends string = any>({ key, type, secretKey }: {
+export const getStorage = <V = unknown, K extends string = string>({
+  key,
+  type,
+  secretKey
+}: {
   key: K
   secretKey?: string
   type: StorageType
@@ -88,19 +105,23 @@ export const getStorage = <V = unknown, K extends string = any>({ key, type, sec
 }
 
 // 获取所有值
-export const getAllStorage = (type: StorageType): Record<string, any> => {
+export const getAllStorage = (type: StorageType): Record<string, never> => {
   const storage = window[type]
-  const storageObject: Record<string, any> = {}
+  const storageObject: Record<string, never> = {}
   for (let i = 0; i < storage.length; i++) {
     const key = window[type].key(i)
     if (key != null) {
-      storageObject[key] = getStorage({ key, type })
+      // storageObject[key] = getStorage({ key, type })
+      console.log('hello')
     }
   }
   return storageObject
 }
 
-export const removeStorage = ({ key, type }: { key: string, type: StorageType }): void => {
+export const removeStorage = ({
+  key,
+  type
+}: { key: string, type: StorageType }): void => {
   window[type].removeItem(key)
 }
 

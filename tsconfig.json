@@ -4,11 +4,16 @@
     "target": "ESNext",
     "module": "NodeNext",
     "declaration": true,
+    "declarationMap": false,
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "lib": ["dom", "ESNext"],
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    // 允许编译javascript文件
+    "allowSyntheticDefaultImports": true,
+    // 编译时移除注释
+    "removeComments": true,
   },
   "include": [
     "src",

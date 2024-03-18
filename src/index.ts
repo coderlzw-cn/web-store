@@ -1,3 +1,4 @@
-export { default as CryptoJS } from 'crypto-js'
-export * as cookieAc from './cookie'
+import CryptoJS from 'crypto-js'
+export * as cookie from './cookie'
 export * as storage from './storage'
+export { CryptoJS }
