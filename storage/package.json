@@ -1,0 +1,5 @@
+{
+  "name": "@coderlzw/web-store/storage",
+  "main": "../dist/storage.js",
+  "private": "true"
+}

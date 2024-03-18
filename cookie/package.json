@@ -1,0 +1,5 @@
+{
+  "name": "@coderlzw/web-store/cookie",
+  "main": "../dist/cookie.js",
+  "private": "true"
+}

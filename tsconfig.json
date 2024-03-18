@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "NodeNext",
+    "declaration": true,
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "ESNext"],
+    "moduleResolution": "NodeNext"
+  },
+  "include": [
+    "src",
+    ".eslintrc.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
