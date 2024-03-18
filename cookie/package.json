@@ -1,5 +1,5 @@
 {
-  "name": "@coderlzw/web-store/cookie",
+  "name": "@coderlzw/test-pack/cookie",
   "main": "../dist/cookie.js",
   "private": "true"
 }
